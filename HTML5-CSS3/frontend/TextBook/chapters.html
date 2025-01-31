@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Textbook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .chapter {
+            margin: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter-title {
+            font-size: 1.5em;
+            color: #333;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .chapter-content {
+            margin-top: 15px;
+            color: #555;
+        }
+
+        .chapter img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>HTML TEXTBOOK</h1>
+    </header>
+
+    <!-- Chapter 1 -->
+    <section class="chapter">
+        <details>
+            <summary class="chapter-title">Chapter 1: Introduction to HTML</summary>
+            <div class="chapter-content">
+                <h3>What is HTML?</h3>
+                <p>
+                    HTML (HyperText Markup Language) is the standard language used to create webpages. It provides the basic structure for web pages, allowing browsers to display text, images, and other content in an organized way.
+                </p>
+                <p>
+                    HTML uses a set of tags, such as <code>&lt;h1&gt;</code> for headings, <code>&lt;p&gt;</code> for paragraphs, and <code>&lt;img&gt;</code> for images. These elements work together to form the content and layout of a webpage.
+                </p>
+                <img src="html.webp" alt="HTML Example Image">
+                <h3>Basic Structure of HTML</h3>
+                <p>
+                    A basic HTML document has the following structure:
+                    <code>
+                        &lt;!DOCTYPE html&gt;<br>
+                        &lt;html&gt;<br>
+                        &lt;head&gt;<br>
+                        &lt;body&gt;<br>
+                        &lt;/body&gt;<br>
+                        &lt;/html&gt;
+                    </code>
+                </p>
+            </div>
+        </details>
+    </section>
+
+    <!-- Chapter 2 -->
+    <section class="chapter">
+        <details>
+            <summary class="chapter-title">Chapter 2: CSS Basics</summary>
+            <div class="chapter-content">
+                <h3>What is CSS?</h3>
+                <p>
+                    CSS (Cascading Style Sheets) is used to style the visual presentation of HTML elements. It controls the layout, colors, fonts, and overall appearance of a webpage. By applying CSS rules to HTML elements, developers can create visually appealing websites.
+                </p>
+                <p>
+                    CSS also allows for responsive design, where the layout adapts to different screen sizes. This is essential for making websites look good on mobile phones, tablets, and desktops.
+                </p>
+                <img src="css.webp" alt="CSS Example Image">
+                <h3>Basic CSS Syntax</h3>
+                <p>
+                    CSS uses selectors to target HTML elements and apply styles. Here’s a basic example:
+                    <code>
+                        h1 {<br>
+                        &nbsp;&nbsp;color: blue;<br>
+                        }
+                    </code>
+                </p>
+                <p>
+                    In this example, all <code>&lt;h1&gt;</code> elements in the document will have their text color changed to blue. CSS rules can also include properties like <code>font-size</code>, <code>margin</code>, and <code>background-color</code>.
+                </p>
+            </div>
+        </details>
+    </section>
+
+    <!-- Chapter 3 -->
+    <section class="chapter">
+        <details>
+            <summary class="chapter-title">Chapter 3: JavaScript Fundamentals</summary>
+            <div class="chapter-content">
+                <h3>What is JavaScript?</h3>
+                <p>
+                    JavaScript is a programming language used to add interactivity and dynamic behavior to web pages. It allows developers to create interactive effects like form validation, animations, and more. JavaScript is an essential tool for creating modern, dynamic websites.
+                </p>
+                <p>
+                    JavaScript is often used in conjunction with HTML and CSS to enhance the user experience on websites. It can be used to manipulate DOM elements, handle events, and even interact with remote servers.
+                </p>
+                <img src="js.webp" alt="JavaScript Example Image">
+                <h3>Basic JavaScript Syntax</h3>
+                <p>
+                    Here’s an example of a simple JavaScript function:
+                    <code>
+                        function greet() {<br>
+                        &nbsp;&nbsp;alert("Hello, World!");<br>
+                        }
+                    </code>
+                </p>
+                <p>
+                    In this example, the <code>greet()</code> function displays a pop-up alert with the message "Hello, World!". JavaScript functions allow developers to group code together and execute it when needed.
+                </p>
+            </div>
+        </details>
+    </section>
+
+    <!-- Chapter 4 -->
+    <section class="chapter">
+        <details>
+            <summary class="chapter-title">Chapter 4: Web Development Tools</summary>
+            <div class="chapter-content">
+                <h3>Development Environment Setup</h3>
+                <p>
+                    Setting up the right development environment is crucial for efficient web development. Some popular tools include code editors like VS Code, version control with Git, and using local servers for testing. These tools streamline the development process and make it easier to collaborate with others.
+                </p>
+                <p>
+                    Modern web development also involves using package managers like npm (Node Package Manager) to manage project dependencies and tools like Webpack or Parcel to bundle assets for production.
+                </p>
+                <img src="web.webp" alt="Web Development Tools">
+            </div>
+        </details>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Interactive. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

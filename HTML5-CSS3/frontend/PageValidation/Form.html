@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Form container styling */
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Header styling */
+        h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Flexbox layout for photo and form content */
+        .form-container {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        /* Photo container styling */
+        .photo-container {
+            flex: 0 0 150px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .photo-container img {
+    width: 150px; /* Set width */
+    height: 150px; /* Set height */
+    object-fit: cover; /* Ensures image covers the square without distortion */
+    border-radius: 8px; /* Optional: Adds rounded corners */
+    border: 2px solid #ddd;
+}
+
+
+        /* Form content styling */
+        .form-content {
+            flex: 1;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="date"], input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="tel"]:focus, input[type="date"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        input[type="file"] {
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Error messages */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Age information styling */
+        #ageInfo {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        /* Clearfix for the form layout */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 600px) {
+            form {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .form-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .photo-container {
+                margin-right: 0;
+                text-align: left;
+                margin-bottom: 20px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Student Registration Form</h2>
+    <form id="registrationForm">
+        <div class="form-container">
+            <div class="photo-container">
+                <img id="photoPreview" src="MY PHOTO.jpg" alt="Passport Photo">
+            </div>
+            <div class="form-content">
+                <label for="name">Student Name:</label>
+                <input type="text" id="name" required>
+                <span class="error" id="nameError"></span>
+
+                <label for="regNo">Registration Number:</label>
+                <input type="text" id="regNo" required>
+                <span class="error" id="regNoError"></span>
+
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" pattern="[0-9]{10}" required>
+                <span class="error" id="mobileError"></span>
+
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" required>
+                <span class="error" id="emailError"></span>
+
+                <label for="username">Username (no special characters):</label>
+                <input type="text" id="username" pattern="[a-zA-Z0-9]+" required>
+                <span class="error" id="usernameError"></span>
+
+                <label for="password">Password (min 8 chars, unique):</label>
+                <input type="password" id="password" required>
+                <span class="error" id="passwordError"></span>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" onchange="calculateAge()" required>
+                <p id="ageInfo"></p>
+            </div>
+        </div>
+
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+
+    <script>
+        function previewPhoto() {
+            const photoInput = document.getElementById("photo");
+            const photoPreview = document.getElementById("photoPreview");
+            const file = photoInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    photoPreview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function calculateAge() {
+            const dob = new Date(document.getElementById("dob").value);
+            if (!isNaN(dob)) {
+                const today = new Date();
+                let years = today.getFullYear() - dob.getFullYear();
+                let months = today.getMonth() - dob.getMonth();
+                let days = today.getDate() - dob.getDate();
+
+                if (days < 0) {
+                    months--;
+                    days += new Date(dob.getFullYear(), dob.getMonth() + 1, 0).getDate();
+                }
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+
+                const ageInfo = `${years} years, ${months} months, and ${days} days old`;
+                document.getElementById("ageInfo").textContent = `Age: ${ageInfo}`;
+            }
+        }
+
+        function validateForm() {
+            let isValid = true;
+            const name = document.getElementById("name").value.trim();
+            const regNo = document.getElementById("regNo").value.trim();
+            const mobile = document.getElementById("mobile").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            // Clear previous errors
+            document.querySelectorAll(".error").forEach(e => e.textContent = "");
+
+            if (name === "") {
+                document.getElementById("nameError").textContent = "Name is required.";
+                isValid = false;
+            }
+            if (regNo === "") {
+                document.getElementById("regNoError").textContent = "Registration number is required.";
+                isValid = false;
+            }
+            if (!/^\d{10}$/.test(mobile)) {
+                document.getElementById("mobileError").textContent = "Enter a valid 10-digit mobile number.";
+                isValid = false;
+            }
+            if (email === "" || !email.includes("@")) {
+                document.getElementById("emailError").textContent = "Enter a valid email address.";
+                isValid = false;
+            }
+            if (!/^[a-zA-Z0-9]+$/.test(username)) {
+                document.getElementById("usernameError").textContent = "Username cannot have special characters.";
+                isValid = false;
+            }
+            if (password.length < 8 || password.includes(name) || password.includes(username)) {
+                document.getElementById("passwordError").textContent = "Password must be at least 8 characters and unique.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Form submitted successfully!");
+            }
+        }
+    </script>
+</body>
+</html>

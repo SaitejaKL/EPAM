@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Slip Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            text-align: left;
+        }
+        .success {
+            color: green;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Pay Slip Validation</h2>
+
+        <form id="paySlipForm">
+            <label for="employeeId">Employee ID</label>
+            <input type="text" id="employeeId" name="employeeId" placeholder="Enter Employee ID" required>
+            <div class="error" id="employeeIdError"></div>
+
+            <label for="employeeName">Employee Name</label>
+            <input type="text" id="employeeName" name="employeeName" placeholder="Enter Employee Name" required>
+            <div class="error" id="employeeNameError"></div>
+
+            <label for="basicSalary">Basic Salary</label>
+            <input type="number" id="basicSalary" name="basicSalary" placeholder="Enter Basic Salary" required>
+            <div class="error" id="basicSalaryError"></div>
+
+            <label for="deductions">Deductions</label>
+            <input type="number" id="deductions" name="deductions" placeholder="Enter Deductions" required>
+            <div class="error" id="deductionsError"></div>
+
+            <label for="bonus">Bonus</label>
+            <input type="number" id="bonus" name="bonus" placeholder="Enter Bonus" required>
+            <div class="error" id="bonusError"></div>
+
+            <button type="submit">Generate Pay Slip</button>
+        </form>
+
+        <div id="paySlipResult" class="success"></div>
+    </div>
+
+    <script>
+        function validatePaySlip(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            document.querySelectorAll('.error').forEach(el => el.innerHTML = '');
+            let isValid = true;
+
+            const employeeId = document.getElementById('employeeId').value;
+            const employeeName = document.getElementById('employeeName').value;
+            const basicSalary = parseFloat(document.getElementById('basicSalary').value);
+            const deductions = parseFloat(document.getElementById('deductions').value);
+            const bonus = parseFloat(document.getElementById('bonus').value);
+
+            if (!employeeId.match(/^\d+$/)) {
+                isValid = false;
+                document.getElementById('employeeIdError').innerText = 'Employee ID must be a number.';
+            }
+            if (!employeeName.match(/^[a-zA-Z\s]+$/)) {
+                isValid = false;
+                document.getElementById('employeeNameError').innerText = 'Employee Name must contain only letters and spaces.';
+            }
+            if (isNaN(basicSalary) || basicSalary <= 0) {
+                isValid = false;
+                document.getElementById('basicSalaryError').innerText = 'Basic Salary must be a positive number.';
+            }
+            if (isNaN(deductions) || deductions < 0) {
+                isValid = false;
+                document.getElementById('deductionsError').innerText = 'Deductions cannot be negative.';
+            }
+            if (isNaN(bonus) || bonus < 0) {
+                isValid = false;
+                document.getElementById('bonusError').innerText = 'Bonus cannot be negative.';
+            }
+
+            if (isValid) {
+                generatePaySlip(employeeId, employeeName, basicSalary, deductions, bonus);
+            }
+        }
+
+        function generatePaySlip(employeeId, employeeName, basicSalary, deductions, bonus) {
+            const totalSalary = basicSalary + bonus - deductions;
+            const paySlipResult = document.getElementById('paySlipResult');
+
+            paySlipResult.innerHTML = `
+                <h3>Pay Slip for ${employeeName} (ID: ${employeeId})</h3>
+                <p>Basic Salary: ₹${basicSalary.toFixed(2)}</p>
+                <p>Bonus: ₹${bonus.toFixed(2)}</p>
+                <p>Deductions: ₹${deductions.toFixed(2)}</p>
+                <p><strong>Total Salary: ₹${totalSalary.toFixed(2)}</strong></p>
+            `;
+        }
+
+        document.getElementById('paySlipForm').addEventListener('submit', validatePaySlip);
+    </script>
+
+</body>
+</html>

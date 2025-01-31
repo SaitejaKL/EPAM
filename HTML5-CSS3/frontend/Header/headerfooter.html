@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolls-Royce News</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        header h2 {
+            font-size: 1.5em;
+            margin-top: 10px;
+            font-weight: normal;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .articles-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        article {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            box-sizing: border-box;
+        }
+
+        article h3 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        article p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        article time {
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .articles-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            article {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Times Of India</h1>
+        <h2>Rolls-Royce News</h2>
+    </header>
+
+    <div class="articles-container">
+        <article>
+            <h3>History of Rolls-Royce: A Glorious Journey</h3>
+            <time datetime="2025-02-20">February 20, 2025</time>
+            <p>
+                Rolls-Royce, founded in 1904, has long been a symbol of luxury, precision, and engineering excellence. Over the years, the company has expanded from crafting luxurious automobiles to designing advanced aircraft engines that power some of the world's most iconic jets.
+            </p>
+            <p>
+                The brand's commitment to craftsmanship, performance, and innovation has helped it carve a niche in both the automotive and aviation industries, making Rolls-Royce a name known across the globe.
+            </p>
+        </article>
+
+        <article>
+            <h3>The Craftsmanship Behind Rolls-Royce Cars</h3>
+            <time datetime="2025-02-22">February 22, 2025</time>
+            <p>
+                Rolls-Royce cars are a true testament to craftsmanship. Each car is hand-built by skilled artisans who carefully select materials, including the finest leathers and hand-polished wood, ensuring that every detail of the car meets the highest standards of luxury.
+            </p>
+            <p>
+                The meticulous attention to detail in every Rolls-Royce vehicle makes it a masterpiece on wheels. With a blend of advanced technology and old-world craftsmanship, Rolls-Royce continues to produce some of the most exclusive and luxurious cars in the world.
+            </p>
+        </article>
+
+        <article>
+            <h3>Rolls-Royce's Innovation in Automotive Engineering</h3>
+            <time datetime="2025-02-25">February 25, 2025</time>
+            <p>
+                Rolls-Royce is at the forefront of automotive innovation, pushing the boundaries of performance, comfort, and luxury. The company has integrated cutting-edge technology into its cars, including advanced suspension systems, state-of-the-art infotainment, and hybrid powertrains.
+            </p>
+            <p>
+                These innovations make Rolls-Royce not just a luxury brand, but a leader in the global automotive industry, continuously setting new standards for performance and efficiency.
+            </p>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Rolls-Royce News. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Spinner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .block-container {
+            width: 400px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .spinner {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue color */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin: 10px;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            display: none; /* Hide initially */
+            border-radius: 8px;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            width: 150px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="block-container">
+        <div class="input-container">
+            <input type="number" id="cgpaInput" placeholder="Enter CGPA" step="0.1" min="0" max="10">
+            <button onclick="displaySpinner()">Submit</button>
+        </div>
+
+        <div class="spinner" id="spinner"></div>
+        <div id="cgpaResult" class="result"></div>
+    </div>
+
+    <script>
+        function displaySpinner() {
+            const cgpa = parseFloat(document.getElementById('cgpaInput').value);
+            const spinner = document.getElementById('spinner');
+            const result = document.getElementById('cgpaResult');
+
+            // Show spinner while processing
+            spinner.style.display = 'block';
+            result.style.display = 'none'; // Hide result initially
+            result.textContent = '';
+
+            // Hide spinner after 2 seconds and display the result
+            setTimeout(function() {
+                spinner.style.display = 'none';
+
+                // Set dynamic gradient colors based on CGPA
+                let gradient;
+                let text;
+
+                if (cgpa > 8.5) {
+                    gradient = 'linear-gradient(45deg, #2ecc71, #27ae60)'; // Green to darker green
+                    text = `CGPA: ${cgpa} (Excellent)`;
+                } else if (cgpa >= 7.5 && cgpa <= 8.5) {
+                    gradient = 'linear-gradient(45deg, #f39c12, #e67e22)'; // Orange to darker orange
+                    text = `CGPA: ${cgpa} (Good)`;
+                } else {
+                    gradient = 'linear-gradient(45deg, #e74c3c, #c0392b)'; // Red to darker red
+                    text = `CGPA: ${cgpa} (Needs Improvement)`;
+                }
+
+                // Apply dynamic gradient background
+                result.textContent = text;
+                result.style.background = gradient;
+                result.style.display = 'block'; // Show result
+            }, 500); // 2 seconds delay for spinner
+        }
+    </script>
+
+</body>
+</html>

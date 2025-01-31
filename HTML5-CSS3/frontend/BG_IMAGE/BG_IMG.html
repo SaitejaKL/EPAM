@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Display</title>
+    <style>
+        body {
+            background-image: url('BG_1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #000000; /* Tomato red color for header */
+        }
+
+        .paragraphs-container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        .item {
+            font-size: 1.2em;
+            max-width: 45%;
+            line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin: 10px;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .item:nth-child(1) {
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background for first paragraph */
+        }
+
+        .item:nth-child(2) {
+            background-color: rgba(255, 99, 71, 0.8); /* Tomato red background for second paragraph */
+        }
+
+        .img {
+            max-width: 45%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <div class="paragraphs-container">
+        <div class="item">
+            <p>EPAM Systems offers industry-focused training courses in software development, cloud computing, and data analytics, providing hands-on experience with modern tools like Java, Python, and AWS. Guided by expert mentors, these programs are designed to enhance practical skills and prepare participants for high-demand tech roles. Perfect for students and professionals, EPAM's courses ensure career growth in the ever-evolving tech landscape.</p>
+        </div>
+        <div class="item">
+            <p>EPAM's courses provide a unique opportunity to gain skills that are directly applicable in the tech industry, offering real-world experience and in-depth knowledge. Whether you're looking to specialize in software engineering, cloud technologies, or data science, these programs are structured to meet the needs of diverse learners, with flexible schedules and comprehensive resources available for students across the globe.</p>
+        </div>
+    </div>
+</body>
+</html>

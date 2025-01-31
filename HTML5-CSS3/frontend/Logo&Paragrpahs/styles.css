@@ -1,0 +1,73 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 140px); /* Subtracting header and footer height */
+    margin-top: 20px; /* Adds space below header */
+}
+
+.container_image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    
+}
+
+.container_image img {
+    max-width: 300%; /* Increased width for the logo */
+    max-height: 300px; /* Increased height for the logo */
+    object-fit: contain;
+}
+
+.container_text {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.text_section {
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 400px; /* Limits the width to ensure the text stays in the right half */
+}
+
+.text_section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.text_section p {
+    margin-bottom: 15px;
+}
+
+.text_section p:first-of-type {
+    margin-top: 20px;
+}
